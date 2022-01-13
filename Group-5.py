@@ -280,7 +280,7 @@ def User_Portal(crd,pin,Balance):
 
 def account_db(a,b,bal):
     u=[]
-    with open('dbs.atm','rb') as data:
+    with open(GetFileLoc('dbs.atm'),'rb') as data:
         while True:
             try:
                 u.append(load(data))
@@ -296,8 +296,8 @@ def account_db(a,b,bal):
                 if b=='update':
                     i.update(value=bal)
                     u[co]=i
-                    remove('dbs.atm')
-                    with open('dbs.atm','wb') as data:
+                    remove(GetFileLoc('dbs.atm'))
+                    with open(GetFileLoc('dbs.atm'),'wb') as data:
                         try:
                             for i in range(len(u)):
                                 dump(u[i],data)
@@ -424,7 +424,7 @@ def AccRemove():
     verf=input("Enter 1 if this is correct.(This will make the account useless!) Enter 2 to go back. Enter 3 for main menu:")
     if verf=='1':
         u=[]
-        with open('dbs.atm','rb') as data:
+        with open(GetFileLoc('dbs.atm'),'rb') as data:
             while True:
                 try:
                     u.append(load(data))
@@ -436,8 +436,8 @@ def AccRemove():
                 co=co+1
                 if key==(str(acc_card)+str(acc_pin)):
                     del u[co]
-                    remove('dbs.atm')
-                    with open('dbs.atm','wb') as data:
+                    remove(GetFileLoc('dbs.atm'))
+                    with open(GetFileLoc('dbs.atm'),'wb') as data:
                         try:
                             for i in range(len(u)):
                                 dump(u[i],data)
